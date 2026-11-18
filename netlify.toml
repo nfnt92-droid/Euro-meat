@@ -1,0 +1,96 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
+
+# Legacy WordPress URLs → new routes (keeps existing links & SEO working)
+[[redirects]]
+  from = "/blog/*"
+  to = "/novosti"
+  status = 301
+[[redirects]]
+  from = "/o-nama/"
+  to = "/o-nama"
+  status = 301
+[[redirects]]
+  from = "/tehnologija/"
+  to = "/tehnologija"
+  status = 301
+[[redirects]]
+  from = "/proizvodi/"
+  to = "/proizvodi"
+  status = 301
+[[redirects]]
+  from = "/kontakt/"
+  to = "/kontakt"
+  status = 301
+
+# Legacy article URLs
+[[redirects]]
+  from = "/oglas-za-prijem-u-radni-odnos-mesar/"
+  to = "/novosti/oglas-za-prijem-u-radni-odnos-mesar"
+  status = 301
+
+[[redirects]]
+  from = "/oglas-prijem-u-radni-odnos-mesar/"
+  to = "/novosti/oglas-prijem-u-radni-odnos-mesar"
+  status = 301
+
+[[redirects]]
+  from = "/oglas-za-posao-radnik-u-preradi-2-izvrsioca/"
+  to = "/novosti/oglas-za-posao-radnik-u-preradi-2-izvrsioca"
+  status = 301
+
+[[redirects]]
+  from = "/oglas-za-posao-potrebni-mesari/"
+  to = "/novosti/oglas-za-posao-potrebni-mesari"
+  status = 301
+
+[[redirects]]
+  from = "/potvrden-halal-certifikat/"
+  to = "/novosti/potvrden-halal-certifikat"
+  status = 301
+
+[[redirects]]
+  from = "/oglas-za-posao-skladistar-1-izvrsilac/"
+  to = "/novosti/oglas-za-posao-skladistar-1-izvrsilac"
+  status = 301
+
+[[redirects]]
+  from = "/oglas-za-posao-mesar-vise-izvrsilaca/"
+  to = "/novosti/oglas-za-posao-mesar-vise-izvrsilaca"
+  status = 301
+
+[[redirects]]
+  from = "/posjeta-ucenika-kompaniji-euro-meat/"
+  to = "/novosti/posjeta-ucenika-kompaniji-euro-meat"
+  status = 301
+
+[[redirects]]
+  from = "/kvalitet/"
+  to = "/kvalitet"
+  status = 301
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"

@@ -1,0 +1,34 @@
+# Decap CMS — becomes active after enabling Netlify Identity + Git Gateway (see README).
+backend:
+  name: git-gateway
+  branch: main
+
+locale: hr          # closest available Decap UI locale to Bosnian
+media_folder: public/media/news
+public_folder: /media/news
+
+collections:
+  - name: news
+    label: Novosti
+    label_singular: Novost
+    folder: src/content/news
+    extension: json
+    format: json
+    create: true
+    slug: '{{slug}}'
+    identifier_field: title
+    summary: '{{date}} — {{title}}'
+    fields:
+      - { label: Naslov, name: title, widget: string }
+      - { label: Slug (URL), name: slug, widget: string, hint: 'Mala slova i crtice, npr. potvrden-halal-certifikat' }
+      - { label: Datum, name: date, widget: datetime, format: 'YYYY-MM-DD', date_format: 'DD.MM.YYYY', time_format: false }
+      - label: Kategorija
+        name: category
+        widget: select
+        options: [Novosti, Kvalitet, Karijere, Zajednica]
+        default: Novosti
+      - { label: Sažetak, name: excerpt, widget: text }
+      - { label: Naslovna fotografija, name: image, widget: image, required: false }
+      - { label: Tekst, name: body, widget: markdown }
+      - { label: Galerija, name: gallery, widget: list, required: false, field: { label: Fotografija, name: src, widget: image } }
+      - { label: Izvorni link / dokument, name: sourceUrl, widget: string, required: false }
